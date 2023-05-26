@@ -1,4 +1,4 @@
-# C# WebAPI MVC with a Postgres Database.
+# C# Entity Framework Migrations
 
 
 1. Fork this repository
@@ -19,10 +19,10 @@ Understand how to apply Entity Framework migrations
 ## Exercise   
 
 Add the LibraryRepository.cs from the previous exercise.   
-Configure this project for a secure connecton to your Elephant SQL instance
-Configure this project for Entity Framework migrations and run an "Add-Migration InitialMigration" command to create a first migration
-Add the Author class from previous project.  Run a "Add-Migration AddedAuthor" to the project.
-Add the Book class from previous project.  Run a "Add-Migration AddedBook" to the project.
+Configure this project for a secure connecton to your Elephant SQL instance.   
+Configure this project for Entity Framework migrations and run an "Add-Migration InitialMigration" command to create a first migration.   
+Add the Author class from previous project.  Run a "Add-Migration AddedAuthor" to the project.   
+Add the Book class from previous project.  Run a "Add-Migration AddedBook" to the project.   
 
 
 ## Extension
