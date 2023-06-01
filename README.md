@@ -12,20 +12,21 @@
 
 ## Key Outcomes   
 
-Understand how to apply Entity Framework migrations
+Understand how to apply Entity Framework migrations, using the commands: add-migration, update-database, script-migration
 
 
 
 ## Exercise   
 
--Add the LibraryRepository.cs from the previous exercise.   
+-Add the LibraryRepository.cs and any models/code from the previous exercise.   
 -Configure this project for a secure connecton to your Elephant SQL instance.   
--Configure this project for Entity Framework migrations and run an "Add-Migration InitialMigration" command to create a first migration.   
--Add the Author class from previous project.  Run a "Add-Migration AddedAuthor" to the project.   (this can be found in the Models, so add an existing item and look in there)    
--Add the Book class from previous project.  Run a "Add-Migration AddedBook" to the project.   (this can be found in the Models, so add an existing item and look in there)   
+-Configure this project for Entity Framework migrations.   
+-Run an "Add-Migration InitialMigration" command to create a first migration.   
+-Add a ReleaseDate (Use DateTime type) property to the Book class.  Ensure this is populated in the Seed method (TIP.  you can't use the DateTime.Now to create the date as PostgreSQL requires a UTC date so use: DateTime.UtcNow    
+ Run a "Add-Migration AddedReleaseDateToBook" to the project.   Run the update-database to change the db.   Note how you don't have any data in the Postgres instance, so you'll need to TRUNCATE TABLE Authors CASCADE (do this for all tables) to empty  
+ the records, then rebuild your project which will load the data with the dates.
 
 ## Extension
--Add the Pushlisher model from the previous Extensions to this and "Add-Migration AddedPublisher"   
 -Create a script-migration
 
 
