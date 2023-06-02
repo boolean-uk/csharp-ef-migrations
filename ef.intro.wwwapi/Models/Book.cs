@@ -11,6 +11,7 @@ namespace ef.intro.wwwapi.Models
         [ForeignKey("Author")]
         public int AuthorId { get; set; }        
         
+        public DateTime? ReleaseDate { get; set; }  
         
     }
 }
