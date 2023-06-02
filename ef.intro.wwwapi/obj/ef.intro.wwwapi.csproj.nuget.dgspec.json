@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Boolean\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj": {}
+    "C:\\Users\\Spili\\experis\\csharp\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj": {}
   },
   "projects": {
-    "C:\\Boolean\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj": {
+    "C:\\Users\\Spili\\experis\\csharp\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Boolean\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj",
+        "projectUniqueName": "C:\\Users\\Spili\\experis\\csharp\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj",
         "projectName": "ef.intro.wwwapi",
-        "projectPath": "C:\\Boolean\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Boolean\\csharp-ef-migrations\\ef.intro.wwwapi\\obj\\",
+        "projectPath": "C:\\Users\\Spili\\experis\\csharp\\csharp-ef-migrations\\ef.intro.wwwapi\\ef.intro.wwwapi.csproj",
+        "packagesPath": "C:\\Users\\Spili\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Spili\\experis\\csharp\\csharp-ef-migrations\\ef.intro.wwwapi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Spili\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,9 +44,29 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",

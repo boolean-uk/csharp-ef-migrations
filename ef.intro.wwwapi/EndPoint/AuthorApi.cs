@@ -6,7 +6,7 @@ namespace ef.intro.wwwapi.EndPoint
 {
     public static class AuthorApi
     {
-    
+
         public static void ConfigureAuthorApi(this WebApplication app)
         {
             app.MapGet("/authors", GetAuthors);
@@ -34,7 +34,7 @@ namespace ef.intro.wwwapi.EndPoint
             {
                 return await Task.Run(() =>
                 {
-                      var person = service.GetAuthor(id);
+                    var person = service.GetAuthor(id);
                     if (person == null) return Results.NotFound();
                     return Results.Ok(person);
                 });
