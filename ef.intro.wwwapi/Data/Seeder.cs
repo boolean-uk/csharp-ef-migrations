@@ -126,6 +126,7 @@ namespace ef.intro.wwwapi.Data
                         book.Title = $"{FirstWord[bookRandom.Next(FirstWord.Count)]} {SecondWord[bookRandom.Next(SecondWord.Count)]} {ThirdWord[bookRandom.Next(ThirdWord.Count)]}";
                         book.AuthorId = authors[authorRandom.Next(authors.Count)].Id;
                         //book.Author = authors[book.AuthorId-1];
+                        book.ReleaseDate = DateTime.UtcNow;
                         books.Add(book);
                     }
                     db.Books.AddRange(books);

@@ -1,0 +1,7 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+**/appsettings.json
+appsettings.json
+appsettings.Development.json
+/c/Users/thana/Desktop/boolean/c#/csharp-ef-migrations/ef.intro.tests/bin/Debug/net7.0/appsettings.json
