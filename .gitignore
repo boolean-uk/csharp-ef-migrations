@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ef.intro.wwwapi/appsettings.json
+/ef.intro.wwwapi/appsettings.Development.json
