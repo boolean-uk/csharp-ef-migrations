@@ -7,6 +7,8 @@ namespace ef.intro.wwwapi.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+
+        public DateTime RealeaseDate { get; set; }
         
         [ForeignKey("Author")]
         public int AuthorId { get; set; }        

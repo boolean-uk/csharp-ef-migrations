@@ -33,7 +33,8 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Books.Add(book);
+                db.SaveChanges();
                 return true;
             };
             return false;
@@ -43,7 +44,8 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Remove(db.Authors.Find(id));
+                db.SaveChanges();
                 return true;
             };
             return false;
@@ -53,7 +55,8 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Remove(db.Books.Find(id));
+                db.SaveChanges();
                 return true;
             };
             return false;
@@ -75,7 +78,15 @@ namespace ef.intro.wwwapi.Repository
             Author result;
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code                
+                List<Author> one = new List<Author>();
+                one = db.Authors.Include(a => a.Books).ToList();
+                Author author = new Author();
+                foreach (var a in one)
+                {
+                    if (a.Id == id)
+                        author = a;
+                }
+                return author;               
             };
             return result;
         }
@@ -85,7 +96,7 @@ namespace ef.intro.wwwapi.Repository
             Book result;
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code              
+                return db.Books.Find(id);
             };
             return result;
         }
@@ -94,7 +105,11 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Authors.Find(author.Id).FirstName = author.FirstName;
+                db.Authors.Find(author.Id).LastName = author.LastName;
+                db.Authors.Find(author.Id).Email = author.Email;
+                db.Authors.Find(author.Id).Books = author.Books;
+                db.SaveChanges ();
                 return true;
             };
             return false;
@@ -104,7 +119,61 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Books.Find(book.Id).Title = book.Title;
+                db.Books.Find(book.Id).AuthorId = book.AuthorId;
+                db.SaveChanges();
+                return true;
+            };
+            return false;
+        }
+
+        public IEnumerable<Publisher> GetAllPublishers()
+        {
+            using (var db = new LibraryContext())
+            {
+                return db.Publishers.ToList();
+            }
+            return null;
+        }
+
+        public Publisher GetPublisher(int id)
+        {
+            Publisher result;
+            using (var db = new LibraryContext())
+            {
+                return db.Publishers.Find(id);
+            };
+            return result;
+        }
+
+        public bool AddPublisher(Publisher publisher)
+        {
+            using (var db = new LibraryContext())
+            {
+                db.Publishers.Add(publisher);
+                db.SaveChanges();
+                return true;
+            };
+            return false;
+        }
+
+        public bool UpdatePublisher(Publisher publisher)
+        {
+            using (var db = new LibraryContext())
+            {
+                db.Publishers.Find(publisher.Id).Name = publisher.Name;
+                db.SaveChanges();
+                return true;
+            };
+            return false;
+        }
+
+        public bool DeletePublisher(int id)
+        {
+            using (var db = new LibraryContext())
+            {
+                db.Remove(db.Publishers.Find(id));
+                db.SaveChanges();
                 return true;
             };
             return false;
