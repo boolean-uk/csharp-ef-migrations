@@ -7,10 +7,14 @@ namespace ef.intro.wwwapi.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+
+        public DateTime ReleaseDate { get; set; }
         
         [ForeignKey("Author")]
-        public int AuthorId { get; set; }        
-        
-        
+        public int AuthorId { get; set; }
+
+        [ForeignKey("Publisher")]
+        public int PublisherId { get; set; }
+        public Publisher Publisher { get; set; }
     }
 }
