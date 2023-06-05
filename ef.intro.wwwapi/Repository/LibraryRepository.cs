@@ -6,13 +6,13 @@ namespace ef.intro.wwwapi.Repository
 {
     public class LibraryRepository : ILibraryRepository
     {
-        public LibraryRepository() 
-        { 
-        
-        }  
+        public LibraryRepository()
+        {
+
+        }
         public bool AddAuthor(Author author)
         {
-            using(var db = new LibraryContext())
+            using (var db = new LibraryContext())
             {
                 db.Authors.Add(author);
                 db.SaveChanges();
@@ -20,11 +20,33 @@ namespace ef.intro.wwwapi.Repository
             }
             return false;
         }
-        public IEnumerable<Author> GetAllAuthors()
-        {            
+
+
+
+        public bool AddPublisher(Publisher publisher)
+        {
             using (var db = new LibraryContext())
             {
-                return db.Authors.Include(a => a.Books).ToList();
+                db.Publishers.Add(publisher);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public IEnumerable<Author> GetAllAuthors()
+        {
+            using (var db = new LibraryContext())
+            {
+                return db.Authors.Include(a => a.Books).ThenInclude(b => b.Publisher).ToList();
+            }
+            return null;
+        }
+
+        public IEnumerable<Publisher> GetAllPublishers()
+        {
+            using (var db = new LibraryContext())
+            {
+                return db.Publishers.ToList();
             }
             return null;
         }
@@ -33,9 +55,10 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Books.Add(book);
+                db.SaveChanges();
                 return true;
-            };
+            }
             return false;
         }
 
@@ -43,9 +66,14 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
-                return true;
-            };
+                var author = db.Authors.FirstOrDefault(a => a.Id == id);
+                if (author != null)
+                {
+                    db.Authors.Remove(author);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
             return false;
         }
 
@@ -53,19 +81,39 @@ namespace ef.intro.wwwapi.Repository
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
-                return true;
-            };
+                var book = db.Books.FirstOrDefault(a => a.Id == id);
+                if (book != null)
+                {
+                    db.Books.Remove(book);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
             return false;
         }
 
-       
+        public bool DeletePublisher(int id)
+        {
+            using (var db = new LibraryContext())
+            {
+                var publisher = db.Publishers.FirstOrDefault(a => a.Id == id);
+                if (publisher != null)
+                {
+                    db.Publishers.Remove(publisher);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
 
         public IEnumerable<Book> GetAllBooks()
         {
             using (var db = new LibraryContext())
             {
-                return db.Books.ToList();
+                return db.Books.Include(x => x.Publisher).ToList();
             }
             return null;
         }
@@ -75,9 +123,8 @@ namespace ef.intro.wwwapi.Repository
             Author result;
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code                
-            };
-            return result;
+                return db.Authors.FirstOrDefault(a => a.Id == id);
+            }
         }
 
         public Book GetBook(int id)
@@ -85,29 +132,48 @@ namespace ef.intro.wwwapi.Repository
             Book result;
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code              
-            };
-            return result;
+                return db.Books.FirstOrDefault(a => a.Id == id);
+            }
+        }
+
+        public Publisher GetPublisher(int id)
+        {
+            Publisher result;
+            using (var db = new LibraryContext())
+            {
+                return db.Publishers.FirstOrDefault(a => a.Id == id);
+            }
         }
 
         public bool UpdateAuthor(Author author)
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Authors.Update(author);
+                db.SaveChanges();
                 return true;
-            };
-            return false;
+            }
         }
 
         public bool UpdateBook(Book book)
         {
             using (var db = new LibraryContext())
             {
-                throw new NotImplementedException(); //TODO: Remove this line and add code
+                db.Books.Update(book);
+                db.SaveChanges();
                 return true;
-            };
-            return false;
+            }
         }
+
+        public bool UpdatePublisher(Publisher publisher)
+        {
+            using (var db = new LibraryContext())
+            {
+                db.Publishers.Update(publisher);
+                db.SaveChanges();
+                return true;
+            }
+        }
+
     }
 }
